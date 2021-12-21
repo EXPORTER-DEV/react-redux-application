@@ -10,6 +10,7 @@ import {
   useParams,
   useLocation,
 } from "react-router-dom";
+import { userLogin } from '../asyncActions/userLogin.js';
 
 import { actionUserLogined } from '../store/userReducer.js';
 
@@ -31,7 +32,8 @@ export default function Main(props){
 			document.getElementById("name").classList.add("error");
 			return;
 		}
-		dispatch(actionUserLogined({username: name}));
+		dispatch(userLogin(1, name, 1000));
+		// dispatch({...actionUserLogined({username: name}), meta: {delay: 1000}});
 		// props.setUser({name: name});
 		setName('');
 	}
